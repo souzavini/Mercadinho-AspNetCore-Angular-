@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "MercadinhoDB": "server=localhost;uid=root;pwd=;database=MercadinhoDB"
+  }
+}
