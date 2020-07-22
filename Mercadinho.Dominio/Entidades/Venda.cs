@@ -10,6 +10,8 @@ namespace Mercadinho.Dominio.Entidades
 
         public DateTime DataPedido { get; set; }
 
+        public int Quantidade { get; set; }
+
         public int ProdutoIdProduto { get; set; }
         public virtual Produto Produto { get; set; }
 

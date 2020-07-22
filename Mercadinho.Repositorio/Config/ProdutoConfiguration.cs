@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Mercadinho.Repositorio.Config
@@ -14,8 +15,14 @@ namespace Mercadinho.Repositorio.Config
             builder.HasKey(p => p.IdProduto);
 
             builder
+                .Property(p => p.NomeProduto)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder
                 .Property(p => p.PrecoUnitario)
-                .IsRequired();
+                .IsRequired()
+                .HasColumnType("decimal(5, 2)");
 
             builder
                 .Property(p => p.Quantidade)

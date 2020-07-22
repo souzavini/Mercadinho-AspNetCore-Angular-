@@ -15,8 +15,12 @@ namespace Mercadinho.Repositorio.Config
 
             builder.Property(v => v.DataPedido)
                 .IsRequired();
+                
 
-
+            builder
+                .Property(v => v.Quantidade)
+                .IsRequired();
+                
         }
     }
 }

@@ -3,14 +3,16 @@ using System;
 using Mercadinho.Repositorio.Contexto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Mercadinho.Repositorio.Migrations
 {
     [DbContext(typeof(MercadinhoContexto))]
-    partial class MercadinhoContextoModelSnapshot : ModelSnapshot
+    [Migration("20200722151142_TerceiraVersão")]
+    partial class TerceiraVersão
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,8 +46,6 @@ namespace Mercadinho.Repositorio.Migrations
                     b.Property<DateTime>("DataPedido");
 
                     b.Property<int>("ProdutoIdProduto");
-
-                    b.Property<int>("Quantidade");
 
                     b.Property<int>("VendedorIdVendedor");
 
