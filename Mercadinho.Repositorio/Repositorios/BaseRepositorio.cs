@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Mercadinho.Repositorio.Repositorios
 {
@@ -33,16 +34,7 @@ namespace Mercadinho.Repositorio.Repositorios
             MercadinhoContexto.Dispose();
         }
 
-        public TEntity ObterPorId(int id)
-        {
-            return MercadinhoContexto.Set<TEntity>().Find(id);
-        }
-
-        public IEnumerable<TEntity> ObterTodos()
-        {
-            return MercadinhoContexto.Set<TEntity>().ToList();
-        }
-
+       
         public void Remover(TEntity entity)
         {
             MercadinhoContexto.Remove(entity);

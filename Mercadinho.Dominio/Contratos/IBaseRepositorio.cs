@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Mercadinho.Dominio.Contratos
 {
@@ -8,10 +9,6 @@ namespace Mercadinho.Dominio.Contratos
     {
 
         void Adicionar(TEntity entity);
-
-        TEntity ObterPorId(int id);
-
-        IEnumerable<TEntity> ObterTodos();
 
         void Atualizar(TEntity entity);
 

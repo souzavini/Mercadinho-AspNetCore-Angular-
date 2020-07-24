@@ -1,12 +1,19 @@
+using Mercadinho.Dominio.Contratos;
 using Mercadinho.Repositorio.Contexto;
+using Mercadinho.Repositorio.Repositorios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
+
+
+
 
 namespace Mercadinho.Web
 {
@@ -28,9 +35,16 @@ namespace Mercadinho.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             var connectionString = Configuration.GetConnectionString("MercadinhoDB");
-            services.AddDbContext<MercadinhoContexto>(option =>
-            option.UseLazyLoadingProxies()
-            .UseMySql(connectionString, m => m.MigrationsAssembly("Mercadinho.Repositorio")));
+            services.AddDbContext<MercadinhoContexto>(x=> 
+            x.UseMySql(connectionString, m => m.MigrationsAssembly("Mercadinho.Repositorio")));
+
+            services.AddMvc().AddJsonOptions(opt => opt.SerializerSettings.ReferenceLoopHandling 
+            = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddScoped<IVendedorRepositorio, VendedorRepositorio>();
+            services.AddScoped<IVendaRepositorio, VendaRepositorio>();
+            services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
