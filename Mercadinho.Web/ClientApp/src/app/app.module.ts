@@ -13,6 +13,9 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { VendaComponent } from './Venda/Venda.component';
 import { ProdutoComponent } from './Produto/Produto.component';
 import { VendedorComponent } from './Vendedor/Vendedor.component';
+import { CadastroProdutoComponent } from './cadastrarProduto/cadastroProduto.component';
+import { ProdutoService } from './Service/produto.service';
+import { CadastroService } from './Service/cadastro.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { VendedorComponent } from './Vendedor/Vendedor.component';
     FetchDataComponent,
     VendaComponent,
     ProdutoComponent,
-    VendedorComponent
+    VendedorComponent,
+    CadastroProdutoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,12 +39,13 @@ import { VendedorComponent } from './Vendedor/Vendedor.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'app-venda', component: VendaComponent },
-      { path: 'app-produto', component: ProdutoComponent },
-      { path: 'app-vendedor', component: VendedorComponent },
+      { path: 'venda', component: VendaComponent },
+      { path: 'produto', component: ProdutoComponent },
+      { path: 'vendedor', component: VendedorComponent },
+      { path: 'cadastro-produto', component: CadastroProdutoComponent },
     ])
   ],
-  providers: [],
+  providers: [ProdutoService,CadastroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

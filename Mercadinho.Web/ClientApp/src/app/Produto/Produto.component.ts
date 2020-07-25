@@ -21,13 +21,14 @@ export class ProdutoComponent implements OnInit{
      }
 
     ngOnInit(){
-        this.carregarProduto();
+        var produtos = this.carregarProduto();
+        console.log(produtos);
     }
 
     carregarProduto(){
         this.produtoService.getAll().subscribe(
-            (produtos: Produto[]) => { 
-                this.produtos = produtos;
+            (produto: Produto[]) => { 
+                this.produtos = produto;
             },
             (erro: any) =>{
                 console.error(erro);
@@ -37,15 +38,27 @@ export class ProdutoComponent implements OnInit{
 
     criarForm(){
         this.produtoForm = this.fb.group({
-            Quantidade:['',Validators.required],
-            PrecoUnitario:['',Validators.required],
-            NomeProduto:['',Validators.required]
-
+            idProduto:[''],
+            quantidade:['',Validators.required],
+            precoUnitario:['',Validators.required],
+            nomeProduto:['',Validators.required]
         });
+    }
+    salvarProduto(produto: Produto){
+        this.produtoService.put(produto.idProduto,produto).subscribe(
+            (retorno: Produto)=> {
+                console.log(retorno)
+                this.carregarProduto();
+            },
+            (erro: any)=> {
+                console.log(erro);
+            }
+        );
     }
     
     produtoSubmit(){
-        console.log(this.produtoForm.value);
+        this.salvarProduto(this.produtoForm.value);
+        //console.log(this.produtoForm.value);
     }
     produtoSelect(produto: Produto){
         this.produtoSelecionado = produto;

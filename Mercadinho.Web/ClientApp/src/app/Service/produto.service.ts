@@ -14,8 +14,25 @@ export class ProdutoService{
     
     }
 
-    baseUrl = `${environment.UrlPrincipal}/api/produto}`;
+    baseUrl = `${environment.UrlPrincipal}/api/produto`;
     getAll(): Observable<Produto[]>{
-        return this.http.get<Produto[]>("https://localhost:44333/api/produto");
+        return this.http.get<Produto[]>(`${this.baseUrl}`);
     }
+
+    getById(id:number): Observable<Produto>{
+        return this.http.get<Produto>(`${this.baseUrl}/${id}`);
+    }
+
+    post(produto: Produto){
+        return this.http.post(`${this.baseUrl}`,produto);
+    }
+
+    put(id:number, produto: Produto){
+        return this.http.put(`${this.baseUrl}/${id}`,produto);
+    }
+
+    delete(id: number){
+        return this.http.delete(`${this.baseUrl}/${id}`);
+    }
+
 }

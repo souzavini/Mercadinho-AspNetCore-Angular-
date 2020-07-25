@@ -1,0 +1,20 @@
+<h1 class="col-md2">Cadastro de Novos Produtos</h1>
+<div>
+<div>
+    <div class="form-group">
+      <label>Nome do Produto:</label>
+      <input type="email" class="form-control" [(ngModel)]="produto.nomeProduto" >
+    </div>
+
+    <div class="form-group">
+        <label>Quantidade Produto:</label>
+        <input type="number" class="form-control" [(ngModel)]="produto.precoUnitario" >
+      </div>
+
+      <div class="form-group">
+        <label>Preço do produto:</label>
+        <input type="number" class="form-control" [(ngModel)]="produto.quantidade" >
+      </div>
+    <button type="submit" class="btn btn-primary" (click)="cadastroSubmit()">Enviar</button>
+    </div>
+</div>
