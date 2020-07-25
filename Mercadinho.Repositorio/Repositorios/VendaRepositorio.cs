@@ -20,20 +20,22 @@ namespace Mercadinho.Repositorio.Repositorios
         {
             IQueryable<Venda> query = MercadinhoContexto.Vendas;
 
-            //query = query.AsNoTracking().OrderBy(v => v.IdVenda);
-
-            query = query.Include(p => p.Vendedor)
-                .ThenInclude(pe => pe.Vendas)
-                .ThenInclude(kj => kj.Produto)
-                .OrderBy(p => p.IdVenda);
+            query = query.AsNoTracking()
+                .Include(p => p.Produto)
+                .ThenInclude(ve => ve.Vendas)
+                .ThenInclude(vend => vend.Vendedor)
+                .OrderBy(p => p.ProdutoIdProduto);
 
             return await query.ToArrayAsync();
+
         }
 
         public Task<Venda> RealizarVenda(Venda venda)
         {
-
-           
+            throw new NotImplementedException();
         }
+
+
+
     }
 }

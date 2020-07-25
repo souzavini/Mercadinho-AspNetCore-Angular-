@@ -11,5 +11,7 @@ namespace Mercadinho.Dominio.Contratos
         Task<Venda[]> ObterTodasVendas();
 
         Task<Venda> RealizarVenda(Venda venda);
+
+        
     }
 }

@@ -32,6 +32,7 @@ namespace Mercadinho.web.Controllers
             }
         }
 
+
         [HttpPost]
         public ActionResult AdicionarVenda([FromBody] Venda venda)
         {
@@ -39,7 +40,7 @@ namespace Mercadinho.web.Controllers
             {
 
                 VendaRepositorio.Adicionar(venda);
-                return Created("api/vendedor", venda);
+                return Created("api/venda", venda);
 
             }
             catch (Exception ex)
